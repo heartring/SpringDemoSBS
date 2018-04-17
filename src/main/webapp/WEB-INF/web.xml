@@ -8,6 +8,14 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-
+  <!-- 把刚才费了好功夫写好的serlet配个路径,可以开始玩了 -->
+  <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>servletReview.OOServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
 
 </web-app>
