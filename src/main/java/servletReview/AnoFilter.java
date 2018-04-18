@@ -21,6 +21,7 @@ public class AnoFilter implements Filter{
                chain.doFilter(request, response);
                return;
            }
+//           转发请求到指定uri
         request.getRequestDispatcher("/hello").forward(request, response);
     }
 

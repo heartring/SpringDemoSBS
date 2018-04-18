@@ -52,6 +52,22 @@
     </dependency>
   </dependencies>
 
+
+  <!-- 可在项目的pom文件中 声明远程仓库 -->
+  <repositories>
+    <repository>
+      <id>aliyun geli</id>
+      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </repository>
+
+    <repository>
+      <id>maven geli</id>
+      <url>http://mvnrepository.com/</url>
+    </repository>
+  </repositories>
+
+
+
   <build>
     <finalName>SpringDemoSBS</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
