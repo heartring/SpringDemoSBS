@@ -3,6 +3,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mysql.jdbc.Driver;
 import org.junit.Test;
+import redis.clients.jedis.Jedis;
 
 import java.sql.SQLException;
 
@@ -39,11 +40,20 @@ public class DataBaseConnectorTest {
         System.out.println(mdb.getName());
         System.out.println(mdb.getCollection("stus").find());
         mc.close();
+    }
 
+    /**
+     * 测试连接redis
+     */
+    @Test
+    public void testRedisConnection(){
+        Jedis jedis = new Jedis("localhost", 6379);
+        String key = jedis.get("myKey");
+        System.out.println(key);
+        jedis.close();
 
 
     }
-
 
 
 }
