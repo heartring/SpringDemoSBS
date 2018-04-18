@@ -12,6 +12,15 @@ import java.io.PrintWriter;
  */
 public class OOServlet extends HttpServlet {
 
+    @Override
+    public void init() throws ServletException {
+        System.out.println("hello init ...");
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("hello destroy ...");
+    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

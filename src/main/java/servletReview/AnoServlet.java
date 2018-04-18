@@ -14,9 +14,17 @@ import java.io.PrintWriter;
  */
 
 
-@WebServlet(urlPatterns = "/ano")
+@WebServlet(urlPatterns = "/ano", loadOnStartup=1)
 public class AnoServlet extends HttpServlet {
+    @Override
+    public void init() throws ServletException {
+        System.out.println("ano init ...");
+    }
 
+    @Override
+    public void destroy() {
+        System.out.println("ano destroy ...");
+    }
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 拿到请求 果断先设置一下字符编码
