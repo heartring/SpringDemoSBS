@@ -2,6 +2,8 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- xml 文件 命名空间是一个很实用的知识点,用空了解一下  -->
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.lx</groupId>
@@ -11,7 +13,7 @@
 
   <name>SpringDemoSBS Maven Webapp</name>
 <!--
-  &lt;!&ndash;  FIXME change it to the project's website &ndash;&gt;
+  &lt;!&ndash;  lxFIXME change it to the project's website &ndash;&gt;
   <url>http://www.example.com</url>
 -->
 
@@ -26,6 +28,9 @@
     <!-- 添加servlet api 创建一个最简单的servlet hello 一下 -->
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
     <dependency>
+
+
+
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
