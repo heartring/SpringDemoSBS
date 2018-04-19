@@ -5,6 +5,7 @@ import com.mysql.jdbc.Driver;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 
 /**
@@ -54,6 +55,26 @@ public class DataBaseConnectorTest {
 
 
     }
+
+
+    @Test
+    public void testPostgresqlConnection() throws SQLException {
+        DruidDataSource dds = new DruidDataSource();
+        dds.setUsername("postgres");
+        dds.setPassword("lx45211");
+        dds.setUrl("jdbc:postgresql://localhost:5432/test_lx");
+        dds.setDriverClassName("org.postgresql.Driver");
+
+
+        DatabaseMetaData dm = dds.getConnection().getMetaData();
+        String dbName = dm.getDatabaseProductName();
+        String version = dm.getDatabaseProductVersion();
+
+        System.out.println(dbName + ": " + version);
+        System.out.println(dm.getClientInfoProperties());
+        dds.close();
+    }
+
 
 
 }

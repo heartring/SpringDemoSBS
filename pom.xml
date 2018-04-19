@@ -25,6 +25,71 @@
 
   <dependencies>
 
+    <!-- 开始引入spring 项目的包 -->
+
+    <!-- spring mvc 包括:
+            mvc管理spring视图层
+            以及spring的核心包 -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.0.4.RELEASE</version>
+    </dependency>
+
+    <!-- spring 集成持久层工具的包 -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.0.4.RELEASE</version>
+    </dependency>
+
+    <!-- spring 集成动态代理 实现面向切面的功能  -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>5.0.4.RELEASE</version>
+    </dependency>
+
+    <!-- mybatis 持久层框架 -->
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.5</version>
+    </dependency>
+
+    <!-- spring 整合mybatis的适配包 -->
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+
+    <!-- 数据库连接池  :使用druid
+        与数据库驱动  : postgresql  -->
+    <!-- 引入 阿里巴巴 号称牛逼的数据库连接池 -->
+    <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.6</version>
+    </dependency>
+
+    <!-- postgresql 数据库连接驱动 -->
+    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.4.1212</version>
+    </dependency>
+
+
+
+
     <!-- redis数据库连接驱动 -->
     <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
     <dependency>
@@ -60,13 +125,6 @@
       <version>5.1.12</version>
     </dependency>
 
-    <!-- 引入 阿里巴巴 号称牛逼的数据库连接池 -->
-    <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid</artifactId>
-      <version>1.1.6</version>
-    </dependency>
 
 
     <!-- 添加servlet api 创建一个最简单的servlet hello 一下 -->
@@ -84,11 +142,7 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-    </dependency>
+
   </dependencies>
 
 
