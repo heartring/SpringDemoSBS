@@ -5,7 +5,23 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+  <!-- 1.启动spring的容器 -->
+  <!--  -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!-- spring 容器启动的 环境配置文件 -->
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
 
-  <display-name>Archetype Created Web Application</display-name>
+  <!-- 监听web环境的启动,引导spring容器的启动 -->
+  <!--  Bootstrap listener to start up and shut down Spring's root -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+
+
+
+
 
 </web-app>
