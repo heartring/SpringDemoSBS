@@ -10,7 +10,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <!-- spring 容器启动的 环境配置文件 -->
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>classpath:config/applicationContext.xml</param-value>
   </context-param>
 
   <!-- 监听web环境的启动,引导spring容器的启动 -->
@@ -20,6 +20,66 @@
   </listener>
 
 
+  <!-- 2.springMVC的 前端控制器 :分发所有请求 -->
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 指定springMVC配置文件的位置 -->
+    <!-- 也可以不指定配置文件, 在web.xml文件同级的目录下创建当前 servlet名-servlet.xml文件 ,tomcat将自动识别 -->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:config/spring-web.xml</param-value>
+    </init-param>
+    <!-- 参数值  1 - tomcat容器启动时,立即初始化  -->
+    <load-on-startup>1</load-on-startup>
+
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <!-- 分发所有请求
+         fixme  重点: 此处绝对要写成 / ,而不是/*或者 空 ,
+         @see  https://blog.csdn.net/u012679583/article/details/52816257-->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!-- 3.字符编码过滤器 :
+            过滤所有请求,放在所有过滤器之前
+            在接收到request 时做第一层过滤
+            声明request解码和response编码,防止乱码解析和乱码数据返回-->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <!-- 声明编码字符集为 utf-8 -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <!-- request强制使用 utf-8 解码-->
+    <init-param>
+      <param-name>forceRequestEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <!-- response强制使用 utf-8 编码-->
+    <init-param>
+      <param-name>forceResponseEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 4. 使用Rest风格的uri :
+            1) 将普通的post请求转成指定delete或者put请求 -->
+  <filter>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
 
 
