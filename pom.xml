@@ -87,6 +87,40 @@
       <version>9.4.1212</version>
     </dependency>
 
+    <!-- ==== web项目中常用的工具包 ==== -->
+
+    <!--  版本号与web.xml中的servlet版本对应
+          tomcat 中有集成此包, 但是如果使用junit等非tomcat环境 则需要此包的工具以供环境使用
+          , 而在tomcat中部署时,不需要此包,因此scope为provided 参与编译 但是不参与打包 -->
+    <!-- 添加servlet api 创建一个最简单的servlet hello 一下 -->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- 方便编写jsp的工具包 -->
+    <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+
+
+    <!-- =============================== -->
+
+
 
 
 
@@ -114,9 +148,6 @@
       <version>3.4.2</version>
     </dependency>
 
-
-
-
     <!-- mysql的数据库连接驱动 -->
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependency>
@@ -127,21 +158,9 @@
 
 
 
-    <!-- 添加servlet api 创建一个最简单的servlet hello 一下 -->
-    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
-    </dependency>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
+
+
 
   </dependencies>
 
