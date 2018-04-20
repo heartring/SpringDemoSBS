@@ -1,16 +1,26 @@
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mysql.jdbc.Driver;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import redis.clients.jedis.Jedis;
 
+import javax.annotation.Resource;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 
 /**
  * Created by Administrator on 2018/4/18 0018.
  */
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(value = {"classpath:config/applicationContext.xml", "classpath:config/spring-web.xml"})
 public class DataBaseConnectorTest {
 
     /**
@@ -73,6 +83,30 @@ public class DataBaseConnectorTest {
         System.out.println(dbName + ": " + version);
         System.out.println(dm.getClientInfoProperties());
         dds.close();
+    }
+
+    @Resource(type = DruidDataSource.class)
+    private DruidDataSource druidDataSource;
+
+    @Test
+    public void testDruidInSpringContext(){
+        DruidPooledConnection connection = null;
+        String dbName = null;
+        try {
+            connection = druidDataSource.getConnection();
+            dbName = connection.getMetaData().getDatabaseProductName();
+            System.out.println(dbName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            druidDataSource.close();
+        }
+
     }
 
 

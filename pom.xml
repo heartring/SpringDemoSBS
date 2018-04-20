@@ -53,6 +53,14 @@
       <version>5.0.4.RELEASE</version>
     </dependency>
 
+    <!-- spring框架中的测试模块 ,可以更方便模拟web环境的测试 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>5.0.4.RELEASE</version>
+    </dependency>
+
+
     <!-- mybatis 持久层框架 -->
     <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
     <dependency>
