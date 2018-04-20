@@ -2,7 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 环境组件扫描 -->
+    <context:component-scan base-package="com.lx">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 1.Spring的配置文件, 这里主要配置与业务逻辑有关的 -->
     <context:property-placeholder location="classpath:config/db.properties"/>
@@ -15,8 +21,44 @@
           p:password="${mysql.password}"
     />
 
+    <!-- 配置sqlSessionFactory 管理 数据库连接会话 -->
+    <!-- 如果配置配置mybatis 的全局配置文件 mybatis-config.xml 则需要在此增加参数 configLocation 使配置文件生效 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="mysqlDataSource"
+          p:mapperLocations="classpath:mappers/*/*.xml"
+          p:configLocation="classpath:config/mybatis-config.xml"
+    />
 
+    <!-- 配置mybatis mapper扫描器, 扫描orm的接口 : 这是为了将sql 与接口映射,mybatis框架管理了orm的具体实现
+            将mybatis接口的实现加入到ioc容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+          p:basePackage="com.lx.*.mapper"
+    />
 
+    <!-- 事务控制的配置 :管理对象即是对应的数据源 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="mysqlDataSource"
+    />
+    <!-- 1.开启基于注解的事务
+         2.使用xml配置形式的事务(必要主要的都应该使用配置文件的形式 : 代码中重点关注业务逻辑)
+    -->
+    <aop:config>
+        <!-- 切入点表达式 service 包下的所有方法 -->
+        <aop:pointcut id="txPointCut" expression="execution(* com.lx.*.service..*(..))"/>
+        <!-- 配置事务增强 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
 
+    <!-- 配置事务增强,事务如何切入 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 所有方法都是事务 -->
+            <tx:method name="*"/>
+            <!-- 以get开头的所有方法 ,配置只查询 可优化效率-->
+            <tx:method name="get*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- Spring 配置文件的核心点(数据源, 与mybatis的整合, 事务控制) -->
 
 </beans>
