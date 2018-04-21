@@ -5,7 +5,13 @@
 
 <generatorConfiguration>
 
+
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 生成没有注释的逆向工程文件 -->
+        <!-- 参见 http://www.mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
 
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -40,6 +46,7 @@
         <!-- 指定每个表的生成策略  -->
         <table tableName="tbl_emp" domainObjectName="Employee"></table>
         <table tableName="tbl_dept" domainObjectName="Department"></table>
+
 
     </context>
 </generatorConfiguration>
