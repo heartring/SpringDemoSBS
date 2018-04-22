@@ -8,6 +8,18 @@ public class Department {
 
     private String deptName;
 
+    public Department() {
+    }
+
+    public Department(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public Department(Integer deptId, String deptName) {
+        this.deptId = deptId;
+        this.deptName = deptName;
+    }
+
     public Integer getDeptId() {
         return deptId;
     }
