@@ -1,5 +1,8 @@
 package com.lx.crud.bean;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Employee {
     private Integer empId;
 
@@ -10,6 +13,16 @@ public class Employee {
     private String email;
 
     private Integer dId;
+
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public Integer getEmpId() {
         return empId;
@@ -49,5 +62,11 @@ public class Employee {
 
     public void setdId(Integer dId) {
         this.dId = dId;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+
     }
 }

@@ -39,7 +39,7 @@
 
 
         <!-- 指定 dao 接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lx.crud.dao"  targetProject=".\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lx.crud.mapper"  targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 

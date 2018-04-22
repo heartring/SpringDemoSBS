@@ -1,10 +1,13 @@
-package com.lx.crud.dao;
+package com.lx.crud.mapper;
 
 import com.lx.crud.bean.Department;
 import com.lx.crud.bean.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface DepartmentMapper {
     long countByExample(DepartmentExample example);
 

@@ -1,10 +1,12 @@
-package com.lx.crud.dao;
+package com.lx.crud.mapper;
 
 import com.lx.crud.bean.Employee;
 import com.lx.crud.bean.EmployeeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EmployeeMapper {
     long countByExample(EmployeeExample example);
 
@@ -19,6 +21,10 @@ public interface EmployeeMapper {
     List<Employee> selectByExample(EmployeeExample example);
 
     Employee selectByPrimaryKey(Integer empId);
+
+    List<Employee> selectByExampleWithDept(EmployeeExample example);
+
+    Employee selectByPrimaryKeyWithDept(Integer empId);
 
     int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
 
