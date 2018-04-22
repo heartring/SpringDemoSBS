@@ -19,7 +19,7 @@
             引入xml文件的p空间 贼好使
             -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-        p:prefix="WEB-INF/views" p:suffix=".jsp"
+        p:prefix="WEB-INF/views/" p:suffix=".jsp"
     />
 
     <!-- 两个标准配置 -->
