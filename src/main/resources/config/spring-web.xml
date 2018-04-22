@@ -9,7 +9,7 @@
     <!--  -->
     <!-- 扫描对应的servlet组件, 可以理解为dispatchServlet管理的组件-->
     <!-- 只扫描控制器组件 -->
-    <context:component-scan base-package="user.web" use-default-filters="false">
+    <context:component-scan base-package="com.lx.*.web" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

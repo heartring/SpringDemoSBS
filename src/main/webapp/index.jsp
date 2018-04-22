@@ -1,18 +1,22 @@
-<html>
+<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
+<%-- 由index.jsp页面直接跳转emps.jsp 页面 并显示查询到的emp员工列表 --%>
+<jsp:forward page="/emps"></jsp:forward>
+
+<%--<html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <title>index</title>
-    <%-- 引入jQuery , bootstrap 依赖于jQuery  --%>
+    &lt;%&ndash; 引入jQuery , bootstrap 依赖于jQuery  &ndash;%&gt;
     <script type="text/javascript" src="static/js/jquery-1.12.4.min.js"></script>
-    <%-- 引入样式 --%>
+    &lt;%&ndash; 引入样式 &ndash;%&gt;
     <link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <%-- 映入js --%>
+    &lt;%&ndash; 映入js &ndash;%&gt;
     <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h2>Hello World!</h2>
-<%-- bootstrap 使用参见 https://v3.bootcss.com/getting-started/ --%>
+&lt;%&ndash; bootstrap 使用参见 https://v3.bootcss.com/getting-started/ &ndash;%&gt;
 <button type="button" class="btn btn-success">按钮</button>
 
 </body>
-</html>
+</html>--%>
